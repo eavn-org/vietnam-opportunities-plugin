@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "vietnam-opportunities",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Read and curate the EA Vietnam and AI Safety Vietnam Discord #opportunities channels.",
   "author": {
     "name": "Parker Vu"

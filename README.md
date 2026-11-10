@@ -2,51 +2,30 @@
 
 This plugin lets ChatGPT read the **EA Vietnam #opportunities** and **AI Safety Vietnam 🎯-opportunities** Discord channels and draft new opportunity digests. It never posts anything until you reply with exactly the word `post`.
 
-Setup takes about 5 minutes. You don't need any technical knowledge.
+Setup takes about 5 minutes. You don't need any technical knowledge or extra software.
 
 ## Before you start
 
 You need:
 
-1. **The ChatGPT desktop app** on a Mac or Windows computer. Download it from [chatgpt.com/download](https://chatgpt.com/download) and sign in.
+1. **The ChatGPT desktop app** on your computer. Download it from [chatgpt.com/download](https://chatgpt.com/download) and sign in.
 2. **Access approval from Parker.** Send Parker the email address you'll sign in with. Parker has to add it to the access list first. If you skip this, sign-in will say you don't have access.
+3. **The plugin file, `vietnam-opportunities.zip`.** Parker may send it to you directly. Otherwise, download it here: [vietnam-opportunities.zip](https://github.com/eavn-org/vietnam-opportunities-plugin/raw/main/dist/vietnam-opportunities.zip)
+
+   **Don't open or unzip it.** ChatGPT needs the `.zip` file exactly as it is. If your Downloads folder shows a folder called `vietnam-opportunities` instead of a `.zip` file, your browser unzipped it automatically (Safari does this). Download it again in Chrome, or ask Parker to send you the file.
 
 ## Install (4 steps)
 
-### 1. Add the plugin source
+### 1. Open the upload window
 
 1. Open the ChatGPT desktop app.
-2. Open **Settings**. On a Mac, click **ChatGPT** in the top menu bar, then **Settings…**
-3. In the left sidebar, click **Plugins**.
-4. Click the **Add** button (top right), then **Add a marketplace**.
-5. In **Source**, paste this link. Leave the other boxes empty, then click **Add marketplace**:
+2. Click **Plugins** in the left sidebar. The icon looks like an @ sign.
+3. Click the **Add** button (top right), then **Upload plugin archive**.
 
-   ```
-   https://github.com/eavn-org/vietnam-opportunities-plugin
-   ```
+### 2. Upload the file
 
-**On a Mac, you may see a red message that starts with `git clone ... failed` and mentions "No developer tools were found".** That's normal on a Mac that has never used coding tools. A small Apple window titled **Install Command Line Developer Tools** opens at the same time. It may be hidden behind ChatGPT.
-
-1. In that Apple window, click **Install**, then **Agree**. It's a free Apple download and takes about 5 to 15 minutes.
-2. When it says the software was installed, click **Done**.
-3. Back in ChatGPT, click **Add marketplace** again.
-
-If you'd rather not install anything, use this instead:
-
-1. Download [this zip file](https://github.com/eavn-org/vietnam-opportunities-plugin/archive/refs/heads/main.zip). Double-click it in your **Downloads** folder to unzip it. You'll get a folder called `vietnam-opportunities-plugin-main`.
-2. In **Add a marketplace**, paste this into **Source** instead of the link:
-
-   ```
-   ~/Downloads/vietnam-opportunities-plugin-main
-   ```
-
-3. Keep that folder. Don't delete or move it.
-
-### 2. Install the plugin
-
-1. Click **Browse directory** (top right of the Plugins page).
-2. Choose the **Vietnam Opportunities** source.
-3. Open **Vietnam Opportunities** and click the **+** (install) button.
+1. Drag `vietnam-opportunities.zip` from your Downloads folder into the box that says **Drag and drop your plugin here**. Or click **click to upload** and choose the file.
+2. Click **Add plugin**.
 
 ### 3. Sign in (twice, once per community)
 
@@ -57,7 +36,7 @@ ChatGPT will ask you to connect two services: **ea-vietnam** and **ai-safety-vie
 3. Check your inbox for a one-time code, and type it in.
 4. Go back to ChatGPT.
 
-If ChatGPT doesn't ask you to sign in, go to **Settings → Plugins → MCPs**. Next to `ea-vietnam` and `ai-safety-vietnam`, click **Authenticate**.
+If ChatGPT doesn't ask you to sign in, open **Settings**, then **Plugins**, then the **MCPs** tab. Next to `ea-vietnam` and `ai-safety-vietnam`, click **Authenticate**.
 
 ### 4. Check it works
 
@@ -86,16 +65,20 @@ ChatGPT shows you the full draft first. Then reply:
 
 | What you see | What to do |
 |---|---|
+| ChatGPT won't accept the file | Make sure it's the `.zip` file, not an unzipped folder. Download it again, or ask Parker to send it. |
 | "You don't have access" or "email not allowed" on the sign-in page | Your email isn't approved yet. Send Parker the exact email you used. |
 | ChatGPT asks you to sign in again later | That's normal. Sign in again with the same email. |
-| "Tools failed to load" or nothing shows up | Go to **Settings → Plugins → MCPs** and click the refresh icon. If that doesn't help, switch the connector off and on, then click **Authenticate**. |
+| "Tools failed to load" or nothing shows up | Open **Settings → Plugins → MCPs** and click the refresh icon. If that doesn't help, switch the connector off and on, then click **Authenticate**. |
 | Anything mentioning `redirect_uri`, `Unauthorized`, `401`, `403` or "secret is missing" | Copy the whole message and send it to Parker. It needs a fix on the server side. |
-| `git clone ... failed` with "No developer tools were found" | See the box under step 1: install Apple's developer tools, or use the zip file instead. |
-| You can't find **Add a marketplace** | ChatGPT may have moved it. Look under **Settings → Plugins**, or send Parker a screenshot. |
+| You can't find **Upload plugin archive** | ChatGPT may have moved it. Look under the **Add** button on the Plugins page, or send Parker a screenshot. |
+
+## Updating
+
+When Parker sends a new version, remove the old plugin first: open **Settings → Plugins**, open **Vietnam Opportunities**, click **Delete plugin**. Then repeat steps 1 to 4 with the new file.
 
 ## For maintainers
 
-- Marketplace catalog: `.agents/plugins/marketplace.json`
-- Plugin: `plugins/vietnam-opportunities/` (`plugin.json`, `mcp.json`, `skills/`, `assets/`)
+- Plugin source: `plugin/` (`plugin.json`, `mcp.json`, `skills/`, `assets/`).
+- Build the archive with `./scripts/build.sh`. It writes `dist/vietnam-opportunities.zip` with `plugin.json` at the archive root. Commit the rebuilt zip so the download link stays current.
+- For each release, bump `version` in `plugin/plugin.json`.
 - Servers: `https://discord-opportunities-mcp.eavn.org/mcp` (`ea-vietnam`) and `https://discord-opportunities-mcp.antoan.ai/mcp` (`ai-safety-vietnam`). Both use OAuth with dynamic client registration through Cloudflare Access. To give someone access, add their email to the Access policy and the Worker's `ALLOWED_EMAILS` on **both** servers.
-- To ship an update, edit the files, bump `version` in `plugin.json`, and push. Users get it when ChatGPT refreshes the marketplace.
