@@ -19,11 +19,28 @@ You need:
 2. Open **Settings**. On a Mac, click **ChatGPT** in the top menu bar, then **Settings…**
 3. In the left sidebar, click **Plugins**.
 4. Click the **Add** button (top right), then **Add a marketplace**.
-5. Paste this link and confirm:
+5. In **Source**, paste this link. Leave the other boxes empty, then click **Add marketplace**:
 
    ```
    https://github.com/eavn-org/vietnam-opportunities-plugin
    ```
+
+**On a Mac, you may see a red message that starts with `git clone ... failed` and mentions "No developer tools were found".** That's normal on a Mac that has never used coding tools. A small Apple window titled **Install Command Line Developer Tools** opens at the same time. It may be hidden behind ChatGPT.
+
+1. In that Apple window, click **Install**, then **Agree**. It's a free Apple download and takes about 5 to 15 minutes.
+2. When it says the software was installed, click **Done**.
+3. Back in ChatGPT, click **Add marketplace** again.
+
+If you'd rather not install anything, use this instead:
+
+1. Download [this zip file](https://github.com/eavn-org/vietnam-opportunities-plugin/archive/refs/heads/main.zip). Double-click it in your **Downloads** folder to unzip it. You'll get a folder called `vietnam-opportunities-plugin-main`.
+2. In **Add a marketplace**, paste this into **Source** instead of the link:
+
+   ```
+   ~/Downloads/vietnam-opportunities-plugin-main
+   ```
+
+3. Keep that folder. Don't delete or move it.
 
 ### 2. Install the plugin
 
@@ -73,6 +90,7 @@ ChatGPT shows you the full draft first. Then reply:
 | ChatGPT asks you to sign in again later | That's normal. Sign in again with the same email. |
 | "Tools failed to load" or nothing shows up | Go to **Settings → Plugins → MCPs** and click the refresh icon. If that doesn't help, switch the connector off and on, then click **Authenticate**. |
 | Anything mentioning `redirect_uri`, `Unauthorized`, `401`, `403` or "secret is missing" | Copy the whole message and send it to Parker. It needs a fix on the server side. |
+| `git clone ... failed` with "No developer tools were found" | See the box under step 1: install Apple's developer tools, or use the zip file instead. |
 | You can't find **Add a marketplace** | ChatGPT may have moved it. Look under **Settings → Plugins**, or send Parker a screenshot. |
 
 ## For maintainers
