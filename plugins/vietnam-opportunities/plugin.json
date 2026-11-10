@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vietnam-opportunities",
+  "version": "1.0.0",
+  "description": "Read and curate the EA Vietnam and AI Safety Vietnam Discord #opportunities channels.",
+  "author": {
+    "name": "Parker Vu"
+  },
+  "keywords": ["ea-vietnam", "ai-safety-vietnam", "discord", "opportunities"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup-check/SKILL.md",
+      "interface": {
+        "displayName": "Vietnam Opportunities",
+        "shortDescription": "Curate EA Vietnam and AI Safety Vietnam opportunity digests",
+        "longDescription": "Connects ChatGPT to the EA Vietnam #opportunities and AI Safety Vietnam 🎯-opportunities Discord channels. Reads what has been posted, drafts new opportunity digests, and only posts after you reply exactly \"post\".",
+        "developerName": "Parker Vu",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "defaultPrompt": [
+          "Run the first-run setup check.",
+          "Draft this week's EA Vietnam opportunities digest.",
+          "Draft this week's AI Safety Vietnam opportunities digest."
+        ],
+        "brandColor": "#2F6B4F",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
