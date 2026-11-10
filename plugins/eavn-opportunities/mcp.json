@@ -14,20 +14,6 @@
           }
         }
       }
-    },
-    "ai-safety-vietnam": {
-      "type": "streamable-http",
-      "url": "https://discord-opportunities-mcp.antoan.ai/mcp",
-      "extensions": {
-        "com.openai": {
-          "auth": {
-            "type": "oauth",
-            "client": {
-              "mode": "dcr"
-            }
-          }
-        }
-      }
     }
   }
 }

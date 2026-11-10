@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aisvn-opportunities",
+  "version": "1.0.0",
+  "description": "Read and curate the AI Safety Vietnam 🎯-opportunities Discord channel.",
+  "author": {
+    "name": "Parker Vu"
+  },
+  "keywords": ["ai-safety-vietnam", "ai-safety", "discord", "opportunities"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup-check/SKILL.md",
+      "interface": {
+        "displayName": "AI Safety Vietnam Opportunities",
+        "shortDescription": "Curate AI Safety Vietnam 🎯-opportunities digests",
+        "longDescription": "Connects ChatGPT to the AI Safety Vietnam 🎯-opportunities Discord channel. Reads what has been posted, drafts new opportunity digests, and only posts after you reply exactly \"post\".",
+        "developerName": "Parker Vu",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "defaultPrompt": [
+          "Run the first-run setup check.",
+          "Draft this week's AI Safety Vietnam opportunities digest."
+        ],
+        "brandColor": "#244080",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}

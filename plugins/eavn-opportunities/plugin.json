@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "eavn-opportunities",
+  "version": "1.0.0",
+  "description": "Read and curate the EA Vietnam #opportunities Discord channel.",
+  "author": {
+    "name": "Parker Vu"
+  },
+  "keywords": ["ea-vietnam", "effective-altruism", "discord", "opportunities"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup-check/SKILL.md",
+      "interface": {
+        "displayName": "EA Vietnam Opportunities",
+        "shortDescription": "Curate EA Vietnam #opportunities digests",
+        "longDescription": "Connects ChatGPT to the EA Vietnam #opportunities Discord channel. Reads what has been posted, drafts new opportunity digests, and only posts after you reply exactly \"post\".",
+        "developerName": "Parker Vu",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "defaultPrompt": [
+          "Run the first-run setup check.",
+          "Draft this week's EA Vietnam opportunities digest."
+        ],
+        "brandColor": "#2F6B4F",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
